@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="../css/main.css"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="../css/materialize.css"  media="screen,projection"/>
+        <script>window.$ = window.jQuery = require('jquery');</script>
+        <title>AyseaTwitchBot</title> 
+    </head>
+    <body>
+        
+      <div class="navbar-fixed">
+        <nav class="nav-wrapper pink">
+          <div class="container">
+            <a href="#" class="brand-logo">AyseaTwitchBot</a>
+            <a href="#" class="sidenav-trigger" data-target="mobile-links">
+              <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="Elo.html">!Elo</a></li>
+              <li><a href="Game.html">!Game</a></li>
+              <li><a href="Wer.html">!Wer</a></li>
+              <li><a href="GameList.html">!Upcoming</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    
+      <ul class="sidenav" id="mobile-links">
+        <li><a href="Elo.html">!Elo</a></li>
+        <li><a href="Game.html">!Game</a></li>
+        <li><a href="Wer.html">!Wer</a></li>
+        <li><a href="GameList.html">!Upcoming</a></li>
+      </ul>
+    
+          <div class="col s9">
+            <div class="row">
+                <form class="col s12">
+                    <div class="input-field col s6">
+                      
+                      <input id="Game_value" type="text" class="validate" placeholder="Game" required>
+                      <button class="btn waves-effect waves-light" type="submit">Übernehmen</button>
+
+                    </div>
+                    
+                    
+                  
+          </div>
+    
+        </div>
+
+        <div id="Apply">Einstellungen gespeichert</div>
+
+        
+
+        <script>
+            const electron = require('electron');
+            const {ipcRenderer} = electron;
+
+            var x = document.getElementById('Apply');
+            
+    
+            const form = document.querySelector('form');
+            form.addEventListener('submit', submitForm);
+            
+            function submitForm(e){
+                e.preventDefault();
+                
+                const Game_value = document.querySelector('#Game_value').value;
+                
+                ipcRenderer.send('Game:add', Game_value);              
+                
+                x.className = "show";
+  
+                setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            }
+
+            
+        </script>
+        <script type="text/javascript" src="../materialize.js"></script>
+
+        <script>
+          $(document).ready(function()
+          {
+          $('.sidenav').sidenav();
+          });
+      </script>
+    </body>
+</html>
+    
