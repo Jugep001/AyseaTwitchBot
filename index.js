@@ -16,6 +16,7 @@ var LP = '';
 var Wer = '';
 var Game = '';
 var Games = '';
+var Death = '';
 
 //set env
 process.env.NODE_ENV = 'production';
@@ -155,6 +156,12 @@ ipcMain.on('Games:add', function(e, Games_Value){
 
 });
 
+// Catch Games:add
+ipcMain.on('Death:add', function(e, Death_Value){
+    
+    Death = Death_Value;
+
+});
 
 //Append to Json
 function addToJson(){
@@ -237,7 +244,7 @@ const Botoptions = {
         password: process.env.TWITCH_OATH_TOKEN,
         
     },
-    channels: ['ayseatv', 'ayseabot'] //You can put more channels here
+    channels: ['ayseatv']
 };
 
 const client = new tmi.client(Botoptions);
@@ -253,31 +260,31 @@ client.on('chat', (channel, user, message, self) => {
     switch (message){
     case '!wer':
         if(Wer === ''){
-            client.action('ayseabot', `Aysea spielt mit niemanden`);
+            client.action('ayseatv', `Aysea spielt mit niemanden`);
         }
         else{
-            client.action('ayseabot', `Aysea spielt mit ${Wer}`);
+            client.action('ayseatv', `Aysea spielt mit ${Wer}`);
         }
         
         break;
         
     case '!game':
         if(Game === ''){
-            client.action('ayseabot', `Aysea spielt gerade nichts`);
+            client.action('ayseatv', `Aysea spielt gerade nichts`);
         }
         else{
-            client.action('ayseabot', `Aysea spielt gerade ${Game}`);
+            client.action('ayseatv', `Aysea spielt gerade ${Game}`);
         }
         
         break;
     case '!upcoming':
         if(Games === ''){
 
-            client.action('ayseabot', `Aysea spielt heute nichts`);
+            client.action('ayseatv', `Aysea spielt heute nichts`);
             
         }
         else{
-            client.action('ayseabot', `Aysea spielt heute ${Games}`);
+            client.action('ayseatv', `Aysea spielt heute ${Games}`);
         }
             
         break;    
@@ -295,11 +302,11 @@ client.on('chat', (channel, user, message, self) => {
         let seconds = uptime_difference_date.getSeconds();
         
         if(!Number.isNaN(hours)){
-            client.action('ayseabot', `Aysea ist seit ${hours} Stunden ${minutes} Minuten und ${seconds} Sekunden on`);
+            client.action('ayseatv', `Aysea ist seit ${hours} Stunden ${minutes} Minuten und ${seconds} Sekunden on`);
             break;
         }
         else{
-            client.action('ayseabot', `Aysea ist gerade nicht on`);
+            client.action('ayseatv', `Aysea ist gerade nicht on`);
             break;
         }
         break;
@@ -309,16 +316,26 @@ client.on('chat', (channel, user, message, self) => {
                 alert("Fehlende Datei!");
             } else {
             var Elo_object = JSON.parse(data); //now it an object
-            client.action('ayseabot', `Aysea ist momentan ${Elo_object.Elo} mit ${Elo_object.LP} LP!`); 
+            client.action('ayseatv', `Aysea ist momentan ${Elo_object.Elo} mit ${Elo_object.LP} LP!`); 
         }});
         break;
     case '!social':
         var youtube = "YOUTUBE:https://www.youtube.com/channel/UCC-TbbEnKvFLVvcUyEvUn_w";
         var instagram = "INSTAGRAM:https://www.instagram.com/ayseax3/";
         var twitter = "TWITTER:https://twitter.com/Aysea_TV";
-        client.action('ayseabot', `${youtube}`);
-        client.action('ayseabot', `${instagram}`);
-        client.action('ayseabot', `${twitter}`);
+        client.action('ayseatv', `${youtube}`);
+        client.action('ayseatv', `${instagram}`);
+        client.action('ayseatv', `${twitter}`);
+        break;
+
+    case '!deaths':
+        if(Death === ''){
+            client.action('ayseatv', `Aysea ist schon 0 mal gestorben!`); 
+        }
+        else{
+            client.action('ayseatv', `Aysea ist schon ${Death} mal gestorben!`); 
+        }
+        
         break;
         
     default:

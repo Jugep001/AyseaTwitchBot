@@ -42,7 +42,8 @@
                 <form class="col s12">
                     <div class="input-field col s6">
                       
-                      <input id="Game_value" type="text" class="validate" placeholder="Game" required>
+                      <input type="number" id="Death_value" name="Death_value" min="0" max="99" placeholder="Deaths">
+                      <button class="btn waves-effect waves-light" type="reset">Zurücksetzen</button>
                       <button class="btn waves-effect waves-light" type="submit">Übernehmen</button>
 
                     </div>
@@ -70,9 +71,9 @@
             function submitForm(e){
                 e.preventDefault();
                 
-                const Game_value = document.querySelector('#Game_value').value;
+                const Game_value = document.querySelector('#Death_value').value;
                 
-                ipcRenderer.send('Game:add', Game_value);              
+                ipcRenderer.send('Death:add', Game_value);              
                 
                 x.className = "show";
   
