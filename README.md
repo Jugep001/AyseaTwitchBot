@@ -8,7 +8,7 @@ CLIENT_ID, CLIENT_SECRET, GET_TOKEN, TWITCH_OATH_TOKEN
 
 To start this Program you can run the index.js 
 
-Commands:
+Commands:  
 !wer - Shows a list of people who play with the streamer  
 !game - Shows the current game  
 !upcoming - Shows a list of the upcoming games which will be played on stream  
