@@ -21,6 +21,14 @@
     background: rgba(255, 255, 255, 0.05);
 }
 
+.uebernehmen-elo{
+  margin-left: 10px;
+}
+
+.Uptime_header{
+  margin-left: 25px;
+}
+
 #app {
     margin: 2em;
     line-height: 1.5;
@@ -30,6 +38,7 @@
 a {
     color: #009579;
 }
+
 
 
  /* The snackbar - position it at the bottom and in the middle of the screen */

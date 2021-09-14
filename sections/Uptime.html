@@ -26,7 +26,6 @@
               <li><a href="Deaths.html">!Deaths</a></li>
               <li><a href="Scare.html">!Jumpscare</a></li>
               <li><a href="Uptime.html">!Uptime</a></li>
-              
             </ul>
           </div>
         </nav>
@@ -42,21 +41,37 @@
         <li><a href="Uptime.html">!Uptime</a></li>
       </ul>
     
-        <div class="col s9">
+          <div class="col s9">
             <div class="row">
-                
+                <h6 class="Uptime_header"> Korrigiere hier die Stundenzahl vom Stream</h6>
+                <form class="col s12">
                     <div class="input-field col s6">
-                      <form class="col s12" id="Wer_form">
-                      <div id="inputs_container">
-                      <input id="Wer" type="text" class="validate" placeholder="Wer?">
-                      </div>
-                      <button class="btn waves-effect waves-light" type="button" onclick="addInput()">Hinzufügen</button>
-                      <button class="btn waves-effect waves-light" type="button" onclick="removeInput()">Löschen</button>
+                    <p>
+                        <label>
+                            <input type="radio" id="Uptime_value" name="Uptime_value" value="+1">
+                            <span>+1</span>
+                        </label>
+                    </p>
+                      
+                    <p>
+                        <label>
+                            <input type="radio" id="Uptime_value" name="Uptime_value" value="Default">
+                            <span>Default</span>
+                        </label>
+                    </p>
+                    
+                    <p>
+                        <label>
+                            <input type="radio" id="Uptime_value" name="Uptime_value" value="-1">
+                            <span>-1</span>
+                        </label>
+                    </p>
+                      
+                
                       <button class="btn waves-effect waves-light" type="submit">Übernehmen</button>
-                      </form>
-                        
+
                     </div>
-            
+                    
                     
                   
           </div>
@@ -64,40 +79,15 @@
         </div>
 
         <div id="Apply">Einstellungen gespeichert</div>
-        <script>var j = 0;</script>
-        <script>
-          function addInput()
-          {
-            
-            var input = document.createElement("INPUT");
-            input.setAttribute('id', "wer",j );
-            input.setAttribute('type', "text");
-            input.setAttribute('class', "validate");
-            input.setAttribute('placeholder', "Wer?");
 
-            document.getElementById('inputs_container').appendChild(input);
-            j++;
-
-          }
-        </script>
-
-        <script>
-          function removeInput()
-          {
-
-            var myobj = document.getElementById("wer",j);
-            myobj.remove(); 
-
-
-          }
-        </script>
+        
 
         <script>
             const electron = require('electron');
             const {ipcRenderer} = electron;
 
-            var x = document.getElementById("Apply");
-
+            var x = document.getElementById('Apply');
+            
     
             const form = document.querySelector('form');
             form.addEventListener('submit', submitForm);
@@ -105,16 +95,9 @@
             function submitForm(e){
                 e.preventDefault();
                 
-                var inputs = document.getElementById("Wer_form").elements;
-                var Wer_value = [];
-                for (var i = 0, element; element = inputs[i++];) {
-                    if (element.type === "text")
-                        Wer_value.push(element.value);
-                }
+                const Game_value = document.querySelector('input[name="Uptime_value"]:checked').value;
                 
-                
-                
-                ipcRenderer.send('Wer:add', Wer_value);
+                ipcRenderer.send('Uptime:add', Game_value);              
                 
                 x.className = "show";
   
@@ -123,8 +106,6 @@
 
             
         </script>
-
-       
         <script type="text/javascript" src="../materialize.js"></script>
 
         <script>
