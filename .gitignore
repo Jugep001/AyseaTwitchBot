@@ -1,2 +1,4 @@
 node_modules
 .env
+release-builds/AyseaTwitchBot.zip
+release-builds/AyseaTwitchBot-win32-ia32/AyseaTwitchBot.exe

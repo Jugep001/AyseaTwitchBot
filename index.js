@@ -281,7 +281,7 @@ const Botoptions = {
         password: process.env.TWITCH_OATH_TOKEN,
         
     },
-    channels: ['Megahero1997']
+    channels: ['ayseatv']
 };
 
 const client = new tmi.client(Botoptions);
@@ -295,7 +295,7 @@ client.on('connected', (address, port) => {
 
 setInterval(function(){
     
-        client.action('Megahero1997', `Mit dem Befehl "!help" könnt ihr meine Befehle sehen!`);
+        client.action('ayseatv', `Mit dem Befehl "!help" könnt ihr meine Befehle sehen!`);
     
      }, 1200000); //600000 für 10 Minuten
 
@@ -303,31 +303,31 @@ client.on('chat', (channel, user, message, self) => {
     switch (message){
     case '!wer':
         if(Wer === ''){
-            client.action('Megahero1997', `Aysea spielt mit niemanden`);
+            client.action('ayseatv', `Aysea spielt mit niemanden`);
         }
         else{
-            client.action('Megahero1997', `Aysea spielt mit ${Wer}`);
+            client.action('ayseatv', `Aysea spielt mit ${Wer}`);
         }
         
         break;
         
     case '!game':
         if(Game === ''){
-            client.action('Megahero1997', `Aysea spielt gerade nichts`);
+            client.action('ayseatv', `Aysea spielt gerade nichts`);
         }
         else{
-            client.action('Megahero1997', `Aysea spielt gerade ${Game}`);
+            client.action('ayseatv', `Aysea spielt gerade ${Game}`);
         }
         
         break;
     case '!upcoming':
         if(Games === ''){
 
-            client.action('Megahero1997', `Aysea spielt heute nichts`);
+            client.action('ayseatv', `Aysea spielt heute nichts`);
             
         }
         else{
-            client.action('Megahero1997', `Aysea spielt heute ${Games}`);
+            client.action('ayseatv', `Aysea spielt heute ${Games}`);
         }
             
         break;    
@@ -365,15 +365,15 @@ client.on('chat', (channel, user, message, self) => {
                     {
                         case '+1':
                             corrected_hours = hours + 1;
-                            client.action('Megahero1997', `Aysea ist seit ${corrected_hours} Stunden ${minutes} Minuten und ${seconds} Sekunden on`);
+                            client.action('ayseatv', `Aysea ist seit ${corrected_hours} Stunden ${minutes} Minuten und ${seconds} Sekunden on`);
                             break;
                         case '-1':
                             corrected_hours = hours - 1;
-                            client.action('Megahero1997', `Aysea ist seit ${corrected_hours} Stunden ${minutes} Minuten und ${seconds} Sekunden on`);
+                            client.action('ayseatv', `Aysea ist seit ${corrected_hours} Stunden ${minutes} Minuten und ${seconds} Sekunden on`);
                             break;
                         case 'Default':
                             corrected_hours = hours;
-                            client.action('Megahero1997', `Aysea ist seit ${corrected_hours} Stunden ${minutes} Minuten und ${seconds} Sekunden on`);
+                            client.action('ayseatv', `Aysea ist seit ${corrected_hours} Stunden ${minutes} Minuten und ${seconds} Sekunden on`);
                             break;
                         default:
                             break;
@@ -384,7 +384,7 @@ client.on('chat', (channel, user, message, self) => {
             break;
         }
         else{
-            client.action('Megahero1997', `Aysea ist gerade nicht on`);
+            client.action('ayseatv', `Aysea ist gerade nicht on`);
             break;
         }
         break;
@@ -395,7 +395,7 @@ client.on('chat', (channel, user, message, self) => {
                 alert("Fehlende Datei!");
             } else {
             var Elo_object = JSON.parse(data); //now it an object
-            client.action('Megahero1997', `Aysea ist momentan ${Elo_object.Elo} mit ${Elo_object.LP} LP!`); 
+            client.action('ayseatv', `Aysea ist momentan ${Elo_object.Elo} mit ${Elo_object.LP} LP!`); 
         }});
         break;
     case '!social':
@@ -403,36 +403,36 @@ client.on('chat', (channel, user, message, self) => {
         var instagram = "INSTAGRAM: https://www.instagram.com/ayseax3/";
         var twitter = "TWITTER: https://twitter.com/Aysea_TV";
         var discord = "DISCORD: https://discord.gg/zVqqE3Mm3W";
-        client.action('Megahero1997', `${youtube}`);
-        client.action('Megahero1997', `${instagram}`);
-        client.action('Megahero1997', `${twitter}`);
-        client.action('Megahero1997', `${discord}`);
+        client.action('ayseatv', `${youtube}`);
+        client.action('ayseatv', `${instagram}`);
+        client.action('ayseatv', `${twitter}`);
+        client.action('ayseatv', `${discord}`);
         break;
 
     case '!deaths':
         if(Death === ''){
-            client.action('Megahero1997', `Aysea ist schon 0 mal gestorben!`); 
+            client.action('ayseatv', `Aysea ist schon 0 mal gestorben!`); 
         }
         else{
-            client.action('Megahero1997', `Aysea ist schon ${Death} mal gestorben!`); 
+            client.action('ayseatv', `Aysea ist schon ${Death} mal gestorben!`); 
         }
         
         break;
     case '!jumpscares':
         if(Scare === ''){
-            client.action('Megahero1997', `Aysea hat sich 0 mal erschrocken!`); 
+            client.action('ayseatv', `Aysea hat sich 0 mal erschrocken!`); 
         }
         else{
-            client.action('Megahero1997', `Aysea hat sich ${Scare} mal erschrocken! Was nen Pleb!`); 
+            client.action('ayseatv', `Aysea hat sich ${Scare} mal erschrocken! Was nen Pleb!`); 
         }
             
         break;
     case '!noob':
-        client.action('Megahero1997', `Aysea ist schon nen richtiger Noob xD`);
+        client.action('ayseatv', `Aysea ist schon nen richtiger Noob xD`);
 
         break;
     case '!help':
-        client.action('Megahero1997', `Die folgenden Commands gibt es: !wer, !game, !upcoming, !uptime, !elo, !social, !deaths, !jumpscares`); 
+        client.action('ayseatv', `Die folgenden Commands gibt es: !wer, !game, !upcoming, !uptime, !elo, !social, !deaths, !jumpscares`); 
         
         break;
     default:
